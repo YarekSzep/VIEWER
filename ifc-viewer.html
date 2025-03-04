@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script type="module">
+        import { IfcViewerAPI } from "https://unpkg.com/web-ifc-viewer@latest";
+
+        async function loadIFC() {
+            const container = document.getElementById("viewer-container");
+            const viewer = new IfcViewerAPI({ container });
+            viewer.IFC.setWasmPath("https://unpkg.com/web-ifc@latest/");
+
+            // 🔹 Twój model IFC (Bubble.io CDN)
+            const ifcUrl = "https://397f12e6258c7d40e39fe19c51c20f9e.cdn.bubble.io/f1741098032750x125230567137682320/2022_QUORUM.ifc";
+            
+            await viewer.IFC.loadIfcUrl(ifcUrl);
+        }
+
+        window.onload = loadIFC;
+    </script>
+    <style>
+        body { margin: 0; }
+        #viewer-container { width: 100vw; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="viewer-container"></div>
+</body>
+</html>
